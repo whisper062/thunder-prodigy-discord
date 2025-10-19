@@ -21,10 +21,11 @@ createEvent({
 
     try {
       if (!channel || channel.type !== ChannelType.GuildText) return;
-      const bannerURL = member.displayBannerURL({ size: 4096 });
+      const user = await member.user.fetch(true);
+      const bannerURL = user.bannerURL({ size: 4096 });
       const banner = bannerURL ? createMediaGallery(bannerURL) : null;
 
-      await channel.send(
+      channel.send(
         res.success(
           banner,
           createThumbArea({
