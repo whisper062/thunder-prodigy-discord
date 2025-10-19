@@ -7,7 +7,7 @@ createEvent({
   name: 'welcomeSystem',
   event: 'guildMemberAdd',
   async run(member) {
-    const channelId = '1175508975568044072';
+    const channelId = '1428851941298933781';
     const channel = member.guild.channels.cache.get(channelId);
 
     const row = createRow(
