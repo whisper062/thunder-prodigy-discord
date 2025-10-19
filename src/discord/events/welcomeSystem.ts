@@ -21,16 +21,15 @@ createEvent({
 
     try {
       if (!channel || channel.type !== ChannelType.GuildText) return;
-      const user = await member.user.fetch(true);
-      const bannerURL = user.bannerURL({ size: 512 });
+      const bannerURL = member.displayBannerURL({ size: 4096 });
       const banner = bannerURL ? createMediaGallery(bannerURL) : null;
 
-      channel.send(
+      await channel.send(
         res.success(
           banner,
           createThumbArea({
             content: brBuilder(`# Bem vindo ${member.displayName}`, 'Faça registro e ganhe acesso ao servidor!'),
-            thumbnail: member.displayAvatarURL({ size: 4096 }),
+            thumbnail: member.displayAvatarURL({ size: 1024 }),
           }),
           Separator.Default,
           row,
