@@ -1,7 +1,7 @@
 {
   "name": "thunder-prodigy-discord",
   "type": "module",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "check": "tsc --noEmit && echo ✔ Ok",
     "build": "tsc",
@@ -28,31 +28,31 @@
   },
   "imports": {
     "#env": [
-      "./build/env.js"
+      "./dist/env.js"
     ],
     "#base": [
-      "./build/discord/base/index.js"
+      "./dist/discord/base/index.js"
     ],
     "#functions": [
-      "./build/functions/index.js"
+      "./dist/functions/index.js"
     ],
     "#database": [
-      "./build/database/index.js"
+      "./dist/database/index.js"
     ],
     "#server": [
-      "./build/server/index.js"
+      "./dist/server/index.js"
     ],
     "#menus": [
-      "./build/menus/index.js"
+      "./dist/menus/index.js"
     ],
     "#tools": [
-      "./build/tools/index.js"
+      "./dist/tools/index.js"
     ],
     "#lib/*": [
-      "./build/lib/*"
+      "./dist/lib/*"
     ],
     "#shared/*": [
-      "./build/shared/*"
+      "./dist/shared/*"
     ]
   },
   "baseVersion": "1.4.8"
