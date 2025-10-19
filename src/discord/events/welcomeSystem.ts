@@ -21,7 +21,7 @@ createEvent({
 
     try {
       if (!channel || channel.type !== ChannelType.GuildText) return;
-      const user = await member.user.fetch(true); // force: true para atualizar cache
+      const user = await member.user.fetch(true);
       const bannerURL = user.bannerURL({ size: 1024 });
       if (!bannerURL) {
         channel.send(
