@@ -19,5 +19,11 @@
     "brilliance": "#f07d5f",
     "nitro": "#ff6bfa",
     "bravery": "#9c84ef"
+  },
+  "emojis": {
+    "gear": "<:gearfinefill:1429196210773688431>"
+  },
+  "images": {
+    "banner": "https://media.discordapp.net/attachments/1175508975568044072/1429240504918347956/Sem_Titulo-1.png?ex=68f56b72&is=68f419f2&hm=410fb08c35df5d478ee4a67e1207b43a1e2f9af57557e4ce0def663927a16a67&=&format=webp&quality=lossless&width=850&height=300"
   }
 }
