@@ -21,12 +21,14 @@ createEvent({
 
     try {
       if (!channel || channel.type !== ChannelType.GuildText) return;
-      if (!member.user.bannerURL()) {
+      const user = await member.user.fetch(true); // force: true para atualizar cache
+      const bannerURL = user.bannerURL({ size: 1024 });
+      if (!bannerURL) {
         channel.send(
           res.success(
             createThumbArea({
               content: brBuilder(`# Bem vindo ${member.displayName}`, 'Faça registro e ganhe acesso ao servidor!'),
-              thumbnail: member.user.displayAvatarURL({ size: 1024 }),
+              thumbnail: user.displayAvatarURL({ size: 1024 }),
             }),
             Separator.Default,
             row,
@@ -35,7 +37,7 @@ createEvent({
       } else {
         channel.send(
           res.success(
-            createMediaGallery(member.user.bannerURL()),
+            createMediaGallery(bannerURL),
             createThumbArea({
               content: brBuilder(`# Bem vindo ${member.displayName}`, 'Faça registro e ganhe acesso ao servidor!'),
               thumbnail: member.user.displayAvatarURL({ size: 1024 }),
