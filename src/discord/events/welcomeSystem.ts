@@ -22,31 +22,20 @@ createEvent({
     try {
       if (!channel || channel.type !== ChannelType.GuildText) return;
       const user = await member.user.fetch(true);
-      const bannerURL = user.bannerURL({ size: 1024 });
-      if (!bannerURL) {
-        channel.send(
-          res.success(
-            createThumbArea({
-              content: brBuilder(`# Bem vindo ${member.displayName}`, 'Faça registro e ganhe acesso ao servidor!'),
-              thumbnail: user.displayAvatarURL({ size: 1024 }),
-            }),
-            Separator.Default,
-            row,
-          ),
-        );
-      } else {
-        channel.send(
-          res.success(
-            createMediaGallery(bannerURL),
-            createThumbArea({
-              content: brBuilder(`# Bem vindo ${member.displayName}`, 'Faça registro e ganhe acesso ao servidor!'),
-              thumbnail: member.user.displayAvatarURL({ size: 1024 }),
-            }),
-            Separator.Default,
-            row,
-          ),
-        );
-      }
+      const bannerURL = user.bannerURL({ size: 512 });
+      const banner = bannerURL ? createMediaGallery(bannerURL) : null;
+
+      channel.send(
+        res.success(
+          banner,
+          createThumbArea({
+            content: brBuilder(`# Bem vindo ${member.displayName}`, 'Faça registro e ganhe acesso ao servidor!'),
+            thumbnail: member.displayAvatarURL({ size: 4096 }),
+          }),
+          Separator.Default,
+          row,
+        ),
+      );
     } catch (error) {
       if (!channel || channel.type !== ChannelType.GuildText) return;
       channel.send(res.danger('-# *Aconteceu um erro, contate um responsável.*'));
