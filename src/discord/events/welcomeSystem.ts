@@ -8,7 +8,7 @@ createEvent({
   event: 'guildMemberAdd',
   async run(member) {
     const channelId = '1428851941298933781';
-    const channel = member.guild.channels.cache.get(channelId);
+    const channel = await member.guild.channels.fetch(channelId);
 
     const row = createRow(
       new ButtonBuilder({
@@ -25,7 +25,7 @@ createEvent({
       const bannerURL = user.bannerURL({ size: 4096 });
       const banner = bannerURL ? createMediaGallery(bannerURL) : null;
 
-      channel.send(
+      await channel.send(
         res.success(
           banner,
           createThumbArea({
@@ -38,7 +38,7 @@ createEvent({
       );
     } catch (error) {
       if (!channel || channel.type !== ChannelType.GuildText) return;
-      channel.send(res.danger('-# *Aconteceu um erro, contate um responsável.*'));
+      await channel.send(res.danger('-# *Aconteceu um erro, contate um responsável.*'));
     }
   },
 });
