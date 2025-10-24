@@ -44,19 +44,9 @@ createCommand({
 
         const row = createRow(
             new ButtonBuilder({
-                custom_id: 'sacar_caixa',
+                custom_id: 'caixa_abrir',
                 style: ButtonStyle.Secondary,
-                label: 'Sacar',
-            }),
-            new ButtonBuilder({
-                custom_id: 'depositar_caixa',
-                style: ButtonStyle.Secondary,
-                label: 'Depositar',
-            }),
-            new ButtonBuilder({
-                custom_id: 'extrato_caixa',
-                style: ButtonStyle.Secondary,
-                label: 'Extrato',
+                label: 'Abrir Caixa',
             }),
         );
 
@@ -68,11 +58,11 @@ createCommand({
                     const channel = await interaction.client.channels.fetch(canal.id);
                     if (channel?.isTextBased() && 'send' in channel) {
                         await channel.send(
-                            res.bravery(createMediaGallery(constants.images.caixa), Separator.Default, row),
+                            res.bravery(createMediaGallery(constants.images.caixathunder), Separator.Default, row),
                         );
                     }
                     return interaction.reply(
-                        res.success(`${constants.emojis.gear} Canal de notificações definido para: <#${canal.id}>.`),
+                        res.success(`${constants.emojis.gear} Canal dd caixa definido para: <#${canal.id}>.`),
                     );
                 } catch (error) {
                     return interaction.reply(

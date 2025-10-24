@@ -8,8 +8,8 @@ createResponder({
     cache: 'cached',
     async run(interaction) {
         await interaction.showModal({
-            title: 'Caixa',
-            customId: 'caixa_form',
+            title: 'Sacar Caixa',
+            customId: 'sacar_form',
             components: createModalFields(
                 createLabel({
                     label: 'Maço de dinheiro:',
