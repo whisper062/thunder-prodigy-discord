@@ -9,6 +9,7 @@
 /.env
 /.env.dev
 /.env.development
+anotações.md
 
 # Config files
 /firebase.json

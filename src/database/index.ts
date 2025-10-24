@@ -1,8 +1,8 @@
+import { env } from "#env";
+import chalk from "chalk";
 import mongoose, { InferSchemaType, model } from "mongoose";
 import { guildSchema } from "./schemas/guild.js";
 import { memberSchema } from "./schemas/member.js";
-import { env } from "#env";
-import chalk from "chalk";
 
 try {
    console.log(chalk.blue("Connecting to MongoDB..."));

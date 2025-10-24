@@ -1,0 +1,50 @@
+import { createResponder, ResponderType } from '#base';
+import { createLabel, createModalFields } from '@magicyan/discord';
+import { ComponentType, TextInputBuilder, TextInputStyle } from 'discord.js';
+
+createResponder({
+    customId: 'sacar_caixa',
+    types: [ResponderType.Button],
+    cache: 'cached',
+    async run(interaction) {
+        await interaction.showModal({
+            title: 'Caixa',
+            customId: 'caixa_form',
+            components: createModalFields(
+                createLabel({
+                    label: 'Maço de dinheiro:',
+                    description: 'Escreva a quantia de maços que deseja sacar do caixa.',
+                    component: new TextInputBuilder({
+                        type: ComponentType.TextInput,
+                        style: TextInputStyle.Short,
+                        placeholder: 'Ex: 5',
+                        custom_id: 'sacar_macos',
+                        required: false,
+                    }),
+                }),
+                createLabel({
+                    label: 'Rolo de dinheiro:',
+                    description: 'Escreva a quantia de rolos que deseja sacar do caixa.',
+                    component: new TextInputBuilder({
+                        type: ComponentType.TextInput,
+                        style: TextInputStyle.Short,
+                        placeholder: 'Ex: 5',
+                        custom_id: 'sacar_rolos',
+                        required: false,
+                    }),
+                }),
+                createLabel({
+                    label: 'Nota de dinheiro:',
+                    description: 'Escreva a quantia de notas que deseja sacar do caixa.',
+                    component: new TextInputBuilder({
+                        type: ComponentType.TextInput,
+                        style: TextInputStyle.Short,
+                        placeholder: 'Ex: 5',
+                        custom_id: 'sacar_notas',
+                        required: false,
+                    }),
+                }),
+            ),
+        });
+    },
+});

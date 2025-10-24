@@ -24,6 +24,11 @@
     "gear": "<:gearfinefill:1429196210773688431>"
   },
   "images": {
-    "banner": "https://media.discordapp.net/attachments/1175508975568044072/1429240504918347956/Sem_Titulo-1.png?ex=68f56b72&is=68f419f2&hm=410fb08c35df5d478ee4a67e1207b43a1e2f9af57557e4ce0def663927a16a67&=&format=webp&quality=lossless&width=850&height=300"
+    "banner": "https://media.discordapp.net/attachments/1175508975568044072/1429240504918347956/Sem_Titulo-1.png?ex=68f56b72&is=68f419f2&hm=410fb08c35df5d478ee4a67e1207b43a1e2f9af57557e4ce0def663927a16a67&=&format=webp&quality=lossless&width=850&height=300",
+    "caixa": "https://media.discordapp.net/attachments/1175508975568044072/1431231639941550211/CAIXA.png?ex=68fca9d5&is=68fb5855&hm=7e3c9b43d3547701e69220c0ffb42bb503ca62c91801ba996cb52e630e42072e&=&format=webp&quality=lossless&width=1214&height=455",
+    "sacar": "https://media.discordapp.net/attachments/1175508975568044072/1431231640453120071/sacar.png?ex=68fca9d6&is=68fb5856&hm=a1b304c5c6962482cade8bfa8b8833a67fbff59618beab67c31f1b11cf8b14e5&=&format=webp&quality=lossless&width=1214&height=455",
+    "depositar": "https://media.discordapp.net/attachments/1175508975568044072/1431231640881074176/depositar.png?ex=68fca9d6&is=68fb5856&hm=12a560c1553f783135872fdd4aa0c9b503dc786ee82fdcb6a40f22539a93c8ff&=&format=webp&quality=lossless&width=1214&height=455",
+    "extrato": "https://media.discordapp.net/attachments/1175508975568044072/1431231641417809920/extrato.png?ex=68fca9d6&is=68fb5856&hm=fb80f68182247da5be8149a57154733e2ee12542572f0d14cf2c8256ed8a655e&=&format=webp&quality=lossless&width=1214&height=455"
+
   }
 }
