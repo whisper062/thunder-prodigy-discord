@@ -4,7 +4,7 @@ import { createLabel, createModalFields } from '@magicyan/discord';
 import { ComponentType, TextInputBuilder, TextInputStyle } from 'discord.js';
 
 createResponder({
-    customId: 'sacar_caixa',
+    customId: 'depositar_caixa',
     types: [ResponderType.Button],
     cache: 'cached',
     async run(interaction) {
@@ -20,39 +20,39 @@ createResponder({
             await interaction.reply(res.danger('-# *Você não tem permissão pra utilizar o caixa.*'));
         } else {
             await interaction.showModal({
-                title: 'Sacar Caixa',
-                customId: 'sacar_form',
+                title: 'Depositar Caixa',
+                customId: 'depositar_form',
                 components: createModalFields(
                     createLabel({
                         label: 'Maço de dinheiro:',
-                        description: 'Escreva a quantia de maços que deseja sacar do caixa.',
+                        description: 'Escreva a quantia de maços que deseja depositar do caixa.',
                         component: new TextInputBuilder({
                             type: ComponentType.TextInput,
                             style: TextInputStyle.Short,
                             placeholder: 'Ex: 5',
-                            custom_id: 'sacar_macos',
+                            custom_id: 'depositar_macos',
                             required: false,
                         }),
                     }),
                     createLabel({
                         label: 'Rolo de dinheiro:',
-                        description: 'Escreva a quantia de rolos que deseja sacar do caixa.',
+                        description: 'Escreva a quantia de rolos que deseja depositar do caixa.',
                         component: new TextInputBuilder({
                             type: ComponentType.TextInput,
                             style: TextInputStyle.Short,
                             placeholder: 'Ex: 5',
-                            custom_id: 'sacar_rolos',
+                            custom_id: 'depositar_rolos',
                             required: false,
                         }),
                     }),
                     createLabel({
                         label: 'Nota de dinheiro:',
-                        description: 'Escreva a quantia de notas que deseja sacar do caixa.',
+                        description: 'Escreva a quantia de notas que deseja depositar do caixa.',
                         component: new TextInputBuilder({
                             type: ComponentType.TextInput,
                             style: TextInputStyle.Short,
                             placeholder: 'Ex: 5',
-                            custom_id: 'sacar_notas',
+                            custom_id: 'depositar_notas',
                             required: false,
                         }),
                     }),

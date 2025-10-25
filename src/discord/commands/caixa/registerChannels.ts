@@ -43,10 +43,20 @@ createCommand({
         const canal = options.getChannel('canal', true);
 
         const row = createRow(
-            new ButtonBuilder({
-                custom_id: 'caixa_abrir',
+               new ButtonBuilder({
+                custom_id: 'sacar_caixa',
                 style: ButtonStyle.Secondary,
-                label: 'Abrir Caixa',
+                label: 'Sacar',
+            }),
+            new ButtonBuilder({
+                custom_id: 'depositar_caixa',
+                style: ButtonStyle.Secondary,
+                label: 'Depositar',
+            }),
+            new ButtonBuilder({
+                custom_id: 'extrato_caixa',
+                style: ButtonStyle.Secondary,
+                label: 'Extrato',
             }),
         );
 

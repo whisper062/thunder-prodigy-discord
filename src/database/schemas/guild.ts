@@ -13,6 +13,9 @@ export const guildSchema = new Schema(
         money: {
             dinheiroLimpo: { type: Number, default: 0 },
             dinheiroSujo: { type: Number, default: 0 },
+            macos: { type: Number, default: 0 },
+            rolos: { type: Number, default: 0 },
+            notas: { type: Number, default: 0 },
         },
     },
     {
