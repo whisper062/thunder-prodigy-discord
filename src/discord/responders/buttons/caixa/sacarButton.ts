@@ -1,4 +1,5 @@
 import { createResponder, ResponderType } from '#base';
+import { db } from '#database';
 import { res } from '#functions';
 import { createLabel, createModalFields } from '@magicyan/discord';
 import { ComponentType, TextInputBuilder, TextInputStyle } from 'discord.js';
@@ -9,6 +10,7 @@ createResponder({
     cache: 'cached',
     async run(interaction) {
         const { member } = interaction;
+        const guild = await db.guilds.get(interaction.guild.id);
 
         if (
             !(
@@ -20,7 +22,7 @@ createResponder({
             await interaction.reply(res.danger('-# *Você não tem permissão pra utilizar o caixa.*'));
         } else {
             await interaction.showModal({
-                title: 'Sacar Caixa',
+                title: `Maços: ${guild.money?.macos} | Rolos: ${guild.money?.rolos} | Notas: ${guild.money?.notas}`,
                 customId: 'sacar_form',
                 components: createModalFields(
                     createLabel({

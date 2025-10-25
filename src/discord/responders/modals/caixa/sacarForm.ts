@@ -8,7 +8,7 @@ createResponder({
     cache: 'cached',
     async run(interaction) {
         const { fields } = interaction;
-        const guild = await db.guilds.get(interaction.guild!.id);
+        const guild = await db.guilds.get(interaction.guild.id);
 
         const macos = parseInt(fields.getTextInputValue('sacar_macos')) || 0;
         const rolos = parseInt(fields.getTextInputValue('sacar_rolos')) || 0;
