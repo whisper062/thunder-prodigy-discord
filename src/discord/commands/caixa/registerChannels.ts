@@ -72,7 +72,7 @@ createCommand({
                         );
                     }
                     return interaction.reply(
-                        res.success(`${constants.emojis.gear} Canal dd caixa definido para: <#${canal.id}>.`),
+                        res.success(`${constants.emojis.gear} Canal de caixa definido para: <#${canal.id}>.`),
                     );
                 } catch (error) {
                     return interaction.reply(
