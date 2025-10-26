@@ -1,6 +1,6 @@
 import { createResponder, ResponderType } from '#base';
 import { db } from '#database';
-import { res } from '#functions';
+import { caixaIlegalLogs, res } from '#functions';
 
 createResponder({
     customId: 'sacar_form',
@@ -34,7 +34,7 @@ createResponder({
             return;
         }
 
-        await db.guilds.inc(interaction.guild!.id, {
+        await db.guilds.inc(interaction.guild.id, {
             'money.dinheiroSujo': -total,
             'money.macos': -macos,
             'money.rolos': -rolos,
@@ -48,5 +48,6 @@ createResponder({
                 }`,
             ),
         );
+        caixaIlegalLogs(false, `${guild.channels?.logsCaixa}`, total, macos, rolos, notas, interaction);
     },
 });

@@ -1,6 +1,6 @@
 import { createResponder, ResponderType } from '#base';
 import { db } from '#database';
-import { res } from '#functions';
+import { caixaIlegalLogs, res } from '#functions';
 
 createResponder({
     customId: 'depositar_form',
@@ -8,6 +8,7 @@ createResponder({
     cache: 'cached',
     async run(interaction) {
         const { fields } = interaction;
+        const guild = await db.guilds.get(interaction.guild.id);
         const macos = parseInt(fields.getTextInputValue('depositar_macos')) || 0;
         const rolos = parseInt(fields.getTextInputValue('depositar_rolos')) || 0;
         const notas = parseInt(fields.getTextInputValue('depositar_notas')) || 0;
@@ -22,7 +23,7 @@ createResponder({
             await interaction.reply(res.danger('Você não utilizou números ou utilizou 0 em todos os campos.'));
             return;
         }
-        await db.guilds.inc(interaction.guild!.id, {
+        await db.guilds.inc(interaction.guild.id, {
             'money.dinheiroSujo': total,
             'money.macos': macos,
             'money.rolos': rolos,
@@ -34,5 +35,6 @@ createResponder({
                 `Você depositou:\nMaços: ${macos}\nRolos: ${rolos}\nNotas: ${notas}\nTotal: $${total.toLocaleString()}`,
             ),
         );
+        caixaIlegalLogs(true, `${guild.channels?.logsCaixa}`, total, macos, rolos, notas, interaction);
     },
 });

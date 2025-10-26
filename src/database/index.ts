@@ -1,6 +1,7 @@
 import { env } from "#env";
 import chalk from "chalk";
 import mongoose, { InferSchemaType, model } from "mongoose";
+import { caixaLogSchema } from "./schemas/caixaLog.js";
 import { guildSchema } from "./schemas/guild.js";
 import { memberSchema } from "./schemas/member.js";
 
@@ -17,8 +18,10 @@ try {
 
 export const db = {
    guilds: model("guild", guildSchema, "guilds"),
-   members: model("member", memberSchema, "members")
+   members: model("member", memberSchema, "members"),
+   caixaLogs: model("caixaLog", caixaLogSchema, "caixaLogs"),
 };
 
 export type GuildSchema = InferSchemaType<typeof guildSchema>;
 export type MemberSchema = InferSchemaType<typeof memberSchema>;
+export type CaixaLogSchema = InferSchemaType<typeof caixaLogSchema>;
