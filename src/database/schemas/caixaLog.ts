@@ -33,16 +33,6 @@ export const caixaLogSchema = new Schema<CaixaLog>(
             async register(data: any) {
                 return this.create(data);
             },
-            async findByUser(userId: string, limit?: number) {
-                const query = this.find({ userId }).sort({ createdAt: -1 });
-                if (limit) query.limit(limit);
-                return query;
-            },
-            async findByGuild(guildId: string, limit?: number) {
-                const query = this.find({ guildId }).sort({ createdAt: -1 });
-                if (limit) query.limit(limit);
-                return query;
-            },
             async findRecent(limit = 20) {
                 return this.find().sort({ createdAt: -1 }).limit(limit);
             },

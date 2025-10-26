@@ -1,4 +1,5 @@
 import { createResponder, ResponderType } from '#base';
+import { db } from '#database';
 import { res } from '#functions';
 import { createLabel, createModalFields } from '@magicyan/discord';
 import { ComponentType, TextInputBuilder, TextInputStyle } from 'discord.js';
@@ -9,6 +10,12 @@ createResponder({
     cache: 'cached',
     async run(interaction) {
         const { member } = interaction;
+        const guild = await db.guilds.get(interaction.guild.id);
+
+        if (!guild.channels?.logsCaixa) {
+            await interaction.reply(res.danger('-# *O canal de logs não está configurado neste servidor.*'));
+            return;
+        }
 
         if (
             !(

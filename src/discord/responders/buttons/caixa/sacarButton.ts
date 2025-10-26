@@ -12,6 +12,11 @@ createResponder({
         const { member } = interaction;
         const guild = await db.guilds.get(interaction.guild.id);
 
+        if (!guild.channels?.logsCaixa) {
+            await interaction.reply(res.danger('-# *O canal de logs não está configurado neste servidor.*'));
+            return;
+        }
+
         if (
             !(
                 member.roles.cache.has('1428979128727765075') ||
