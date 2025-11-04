@@ -17,12 +17,12 @@ createResponder({
         const total = macos * 600 + rolos * 60;
 
         if (![macos, rolos, dinheiro].every((n) => Number.isInteger(n) && n >= 0)) {
-            interaction.reply(res.danger('Use apenas números inteiros positivos nos campos.'));
+            interaction.reply(res.danger('-# *Use apenas números inteiros positivos nos campos.*'));
             return;
         }
 
         if (total === 0) {
-            await interaction.reply(res.danger('Você não pode deixar os campos de rolos e maços vazios.'));
+            await interaction.reply(res.danger('-# *Você não pode deixar os campos de rolos e maços vazios.*'));
             return;
         }
 
