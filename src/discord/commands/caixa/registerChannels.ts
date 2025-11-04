@@ -35,25 +35,6 @@ createCommand({
                 },
             ],
         },
-        {
-            name: 'lavar',
-            description: 'Lava dinheiro sujo em dinheiro limpo usando maços ou rolos.',
-            type: ApplicationCommandOptionType.Subcommand,
-            options: [
-                {
-                    name: 'maços',
-                    description: 'Selecione a quantidade maços.',
-                    type: ApplicationCommandOptionType.Integer,
-                    required: false,
-                },
-                {
-                    name: 'rolos',
-                    description: 'Selecione a quantidade rolos.',
-                    type: ApplicationCommandOptionType.Integer,
-                    required: false,
-                },
-            ],
-        },
     ],
 
     async run(interaction) {
@@ -70,6 +51,11 @@ createCommand({
                 custom_id: 'depositar_caixa',
                 style: ButtonStyle.Secondary,
                 label: 'Depositar',
+            }),
+            new ButtonBuilder({
+                custom_id: 'lavar_caixa',
+                style: ButtonStyle.Secondary,
+                label: 'Lavar',
             }),
             new ButtonBuilder({
                 custom_id: 'extrato_caixa',
@@ -110,40 +96,6 @@ createCommand({
                     res.success(`${constants.emojis.gear} Canal de notificações definido para: <#${canal.id}>.`),
                 );
             }
-            case 'lavar': {
-                const macos = options.getInteger('maços');
-                const rolos = options.getInteger('rolos');
-
-                if (!macos && !rolos) {
-                    return interaction.reply(res.warning('-# *Você precisa especificar maços ou rolos para lavar.*'));
-                }
-
-                if ((macos && macos < 1) || (rolos && rolos < 1)) {
-                    return interaction.reply(res.danger('-# *A quantidade deve ser maior que zero!*'));
-                }
-
-                if ((macos && doc.money!.macos < macos) || (rolos && doc.money!.rolos < rolos)) {
-                    return interaction.reply(
-                        res.danger('-# *Você não possui maços ou rolos suficientes para lavar essa quantidade.*'),
-                    );
-                }
-                if (macos) {
-                    await db.guilds.inc(interaction.guild.id, {
-                        'money.macos': -macos,
-                        'money.dinheiroSujo': -(macos * 600),
-                        'money.dinheiroLimpo': macos * 600,
-                    });
-                }
-                if (rolos) {
-                    await db.guilds.inc(interaction.guild.id, {
-                        'money.rolos': -rolos,
-                        'money.dinheiroSujo': -(rolos * 60),
-                        'money.dinheiroLimpo': rolos * 60,
-                    });
-                }
-                return interaction.reply(res.success(`-# *Lavagem concluída com sucesso!*`));
-            }
-
             default: {
                 return interaction.reply(res.warning('-# *Subcomando inválido.*'));
             }
