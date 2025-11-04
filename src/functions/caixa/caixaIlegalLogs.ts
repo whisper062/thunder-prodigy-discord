@@ -1,7 +1,7 @@
 import { db } from '#database';
 import { brBuilder, createSection } from '@magicyan/discord';
 import { ButtonBuilder, ButtonStyle } from 'discord.js';
-import { res } from './res.js';
+import { res } from '../utils/res.js';
 
 export async function caixaIlegalLogs(
     state: boolean,
