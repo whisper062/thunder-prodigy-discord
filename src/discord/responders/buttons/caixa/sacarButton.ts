@@ -1,8 +1,8 @@
 import { createResponder, ResponderType } from '#base';
 import { db } from '#database';
 import { res } from '#functions';
-import { createLabel, createModalFields } from '@magicyan/discord';
-import { ComponentType, TextInputBuilder, TextInputStyle } from 'discord.js';
+import { createMediaGallery, createRow, Separator } from '@magicyan/discord';
+import { ButtonBuilder, ButtonStyle } from 'discord.js';
 
 createResponder({
     customId: 'sacar_caixa',
@@ -11,6 +11,19 @@ createResponder({
     async run(interaction) {
         const { member } = interaction;
         const guild = await db.guilds.get(interaction.guild.id);
+
+        const row = createRow(
+            new ButtonBuilder({
+                custom_id: 'saque_legal',
+                label: 'Saque Legal',
+                style: ButtonStyle.Secondary,
+            }),
+            new ButtonBuilder({
+                custom_id: 'saque_ilegal',
+                label: 'Saque Ilegal',
+                style: ButtonStyle.Secondary,
+            }),
+        );
 
         if (!guild.channels?.logsCaixa) {
             await interaction.reply(res.danger('-# *O canal de logs não está configurado neste servidor.*'));
@@ -26,45 +39,9 @@ createResponder({
         ) {
             await interaction.reply(res.danger('-# *Você não tem permissão pra utilizar o caixa.*'));
         } else {
-            await interaction.showModal({
-                title: `Maços: ${guild.money?.macos} | Rolos: ${guild.money?.rolos} | Notas: ${guild.money?.notas}`,
-                customId: 'sacar_form',
-                components: createModalFields(
-                    createLabel({
-                        label: 'Maço de dinheiro:',
-                        description: 'Escreva a quantia de maços que deseja sacar do caixa.',
-                        component: new TextInputBuilder({
-                            type: ComponentType.TextInput,
-                            style: TextInputStyle.Short,
-                            placeholder: 'Ex: 5',
-                            custom_id: 'sacar_macos',
-                            required: false,
-                        }),
-                    }),
-                    createLabel({
-                        label: 'Rolo de dinheiro:',
-                        description: 'Escreva a quantia de rolos que deseja sacar do caixa.',
-                        component: new TextInputBuilder({
-                            type: ComponentType.TextInput,
-                            style: TextInputStyle.Short,
-                            placeholder: 'Ex: 5',
-                            custom_id: 'sacar_rolos',
-                            required: false,
-                        }),
-                    }),
-                    createLabel({
-                        label: 'Nota de dinheiro:',
-                        description: 'Escreva a quantia de notas que deseja sacar do caixa.',
-                        component: new TextInputBuilder({
-                            type: ComponentType.TextInput,
-                            style: TextInputStyle.Short,
-                            placeholder: 'Ex: 5',
-                            custom_id: 'sacar_notas',
-                            required: false,
-                        }),
-                    }),
-                ),
-            });
+            await interaction.reply(
+                res.default(createMediaGallery(constants.images.sacar), Separator.Default, row),
+            );
         }
     },
 });

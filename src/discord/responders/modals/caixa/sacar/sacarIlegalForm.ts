@@ -3,7 +3,7 @@ import { db } from '#database';
 import { caixaIlegalLogs, res } from '#functions';
 
 createResponder({
-    customId: 'sacar_form',
+    customId: 'sacar_ilegalform',
     types: [ResponderType.ModalComponent],
     cache: 'cached',
     async run(interaction) {

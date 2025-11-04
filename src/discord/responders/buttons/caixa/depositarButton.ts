@@ -15,12 +15,12 @@ createResponder({
         const row = createRow(
             new ButtonBuilder({
                 custom_id: 'deposito_legal',
-                label: 'Legal',
+                label: 'Deposito Legal',
                 style: ButtonStyle.Secondary,
             }),
             new ButtonBuilder({
                 custom_id: 'deposito_ilegal',
-                label: 'Ilegal',
+                label: 'Deposito Ilegal',
                 style: ButtonStyle.Secondary,
             }),
         );
