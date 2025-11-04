@@ -3,7 +3,7 @@ import { db } from '#database';
 import { caixaIlegalLogs, res } from '#functions';
 
 createResponder({
-    customId: 'depositar_form',
+    customId: 'depositar_ilegalform',
     types: [ResponderType.ModalComponent],
     cache: 'cached',
     async run(interaction) {

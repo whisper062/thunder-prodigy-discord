@@ -3,7 +3,7 @@ import { db } from '#database';
 import { res } from '#functions';
 
 createResponder({
-    customId: 'deposito_legalForm',
+    customId: 'depositar_legalform',
     types: [ResponderType.ModalComponent],
     cache: 'cached',
     async run(interaction) {

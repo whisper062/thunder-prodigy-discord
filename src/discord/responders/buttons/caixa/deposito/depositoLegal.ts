@@ -9,7 +9,7 @@ createResponder({
     async run(interaction) {
         interaction.showModal({
             title: 'Deposito de dinheiro legal',
-            customId: 'deposito_legalForm',
+            customId: 'depositar_legalform',
             components: createModalFields(
                 createLabel({
                     label: 'Quantidade:',

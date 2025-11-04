@@ -2,7 +2,7 @@ import { createResponder, ResponderType } from '#base';
 import { res } from '#functions';
 
 createResponder({
-  customId: 'form',
+  customId: 'register_form',
   types: [ResponderType.ModalComponent],
   cache: 'cached',
   async run(interaction) {

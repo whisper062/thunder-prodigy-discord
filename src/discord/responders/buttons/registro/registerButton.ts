@@ -15,7 +15,7 @@ createResponder({
       } else {
         await interaction.showModal({
           title: 'Bem vindo a Thunder',
-          customId: 'form',
+          customId: 'register_form',
           components: createModalFields(
             createLabel({
               label: 'Nome',
