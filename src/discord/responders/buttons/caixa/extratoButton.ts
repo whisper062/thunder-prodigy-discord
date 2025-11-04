@@ -32,10 +32,16 @@ createResponder({
         const prg = '```';
         const lista =
             transacoes
-                .map(
-                    (t, i) =>
-                        `\n[${i + 1}] ${nomes[i]} - ${t.tipo.toUpperCase()} ${t.natureza.toUpperCase()} - $ ${t.total}`,
-                )
+                .map((t, i) => {
+                    if (t.tipo?.toLowerCase() === 'lavagem') {
+                        return `\n[${i + 1}] ${nomes[i]} - ${t.tipo.toUpperCase()} ${t.natureza.toUpperCase()} - $ ${
+                            t.total
+                        }/${t.totalLimpo}`;
+                    }
+                    return `\n[${i + 1}] ${nomes[i]} - ${t.tipo.toUpperCase()} ${t.natureza.toUpperCase()} - $ ${
+                        t.total
+                    }`;
+                })
                 .join('') || 'Nenhuma transação registrada.';
 
         await interaction.reply(

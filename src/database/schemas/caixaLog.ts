@@ -10,6 +10,7 @@ export interface CaixaLog extends Document {
     tipo: TipoTransacao;
     natureza: NaturezaTransacao;
     total: number;
+    totalLimpo: number;
     macos: number;
     rolos: number;
     notas: number;
@@ -23,6 +24,7 @@ export const caixaLogSchema = new Schema<CaixaLog>(
         tipo: { type: String, enum: ['deposito', 'saque', 'lavagem'], required: true },
         natureza: { type: String, enum: ['legal', 'ilegal'], required: true },
         total: { type: Number, required: true },
+        totalLimpo: { type: Number },
         macos: { type: Number, required: true },
         rolos: { type: Number, required: true },
         notas: { type: Number, required: true },
