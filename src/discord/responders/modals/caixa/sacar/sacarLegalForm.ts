@@ -1,6 +1,6 @@
 import { createResponder, ResponderType } from '#base';
 import { db } from '#database';
-import { res } from '#functions';
+import { caixaLegalLogs, res } from '#functions';
 
 createResponder({
     customId: 'saque_legalform',
@@ -34,5 +34,7 @@ createResponder({
         await interaction.reply(
             res.danger(`Você sacou:\nTotal: ${dinheiro}\nNovo Total: ${(guild.money?.dinheiroLimpo ?? 0) - dinheiro} `),
         );
+
+        caixaLegalLogs(false, `${guild.channels?.logsCaixa}`, dinheiro, interaction);
     },
 });

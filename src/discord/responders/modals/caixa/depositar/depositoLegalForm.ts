@@ -1,6 +1,6 @@
 import { createResponder, ResponderType } from '#base';
 import { db } from '#database';
-import { res } from '#functions';
+import { caixaLegalLogs, res } from '#functions';
 
 createResponder({
     customId: 'depositar_legalform',
@@ -8,6 +8,7 @@ createResponder({
     cache: 'cached',
     async run(interaction) {
         const { fields } = interaction;
+        const guild = await db.guilds.get(interaction.guild.id);
         const dinheiro = parseInt(fields.getTextInputValue('depositar_dinheirolegal')) || 0;
 
         if (!Number.isInteger(dinheiro) || dinheiro < 0) {
@@ -24,5 +25,7 @@ createResponder({
         });
 
         await interaction.reply(res.success(`Você depositou:\nTotal: $${dinheiro.toLocaleString()}`));
+
+        caixaLegalLogs(true, `${guild.channels?.logsCaixa}`, dinheiro, interaction);
     },
 });
