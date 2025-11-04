@@ -21,6 +21,11 @@ createResponder({
             return;
         }
 
+        if (total === 0) {
+            await interaction.reply(res.danger('Você não pode deixar os campos de rolos e maços vazios.'));
+            return;
+        }
+
         if ((macos && guild.money!.macos < macos) || (rolos && guild.money!.rolos < rolos)) {
             await interaction.reply(
                 res.danger('-# *Você não possui maços ou rolos suficientes para lavar essa quantidade.*'),
