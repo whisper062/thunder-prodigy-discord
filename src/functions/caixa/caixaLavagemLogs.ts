@@ -67,9 +67,10 @@ export async function caixaLavagemLogs(
         userId: interaction.user.id,
         tipo: 'lavagem',
         natureza: 'ilegal',
-        totalSujo: quantity,
+        total: quantity,
         totalLimpo: quantityClean,
         macos: macos,
         rolos: rolos,
+        notas: 0
     });
 }

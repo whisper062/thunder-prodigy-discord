@@ -1,6 +1,6 @@
 import { createResponder, ResponderType } from '#base';
 import { db } from '#database';
-import { res } from '#functions';
+import { caixaLavagemLogs, res } from '#functions';
 import { brBuilder } from '@magicyan/discord';
 
 createResponder({
@@ -45,5 +45,6 @@ createResponder({
                 ),
             ),
         );
+        caixaLavagemLogs(`${guild.channels?.logsCaixa}`, total, dinheiro, macos, rolos, interaction);
     },
 });

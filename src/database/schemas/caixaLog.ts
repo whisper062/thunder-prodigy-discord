@@ -20,7 +20,7 @@ export const caixaLogSchema = new Schema<CaixaLog>(
     {
         guildId: t.string,
         userId: t.string,
-        tipo: { type: String, enum: ['deposito', 'saque'], required: true },
+        tipo: { type: String, enum: ['deposito', 'saque', 'lavagem'], required: true },
         natureza: { type: String, enum: ['legal', 'ilegal'], required: true },
         total: { type: Number, required: true },
         macos: { type: Number, required: true },
